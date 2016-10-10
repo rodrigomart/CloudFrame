@@ -59,19 +59,19 @@ class Cloud {
 
 
 	/**
-	 * Procedure trigger exists?
+	 * Check that the Bind exists.
 	 * @param  string $trigger - Trigger.
 	 * @return   bool
 	 */
-	public function ExistsBind($trigger)
+	public function BindExists($trigger)
 	{return $this->Dispatch->Exists('BIND@'.$trigger);}
 
 	/**
-	 * Procedure route exists?
+	 * Check that the route exists.
 	 * @param  string $route - Route.
 	 * @return   bool
 	 */
-	public function ExistsRoute($route)
+	public function RouteExists($route)
 	{return $this->Dispatch->Exists('ROUTE@'.$route);}
 
 	/**
