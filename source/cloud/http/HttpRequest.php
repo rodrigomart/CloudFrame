@@ -22,42 +22,42 @@ class HttpRequest {
 		$parts = explode('/', $_SERVER['SERVER_PROTOCOL']);
 		return $parts[1];
 	}
-	
+
 	/**
 	 * Method.
 	 * @return string
 	 */
 	public static function Method()
 	{return $_SERVER['REQUEST_METHOD'];}
-	
+
 	/**
 	 * Scheme.
 	 * @return string
 	 */
 	public static function Scheme()
 	{return $_SERVER['REQUEST_SHEME'];}
-	
+
 	/**
 	 * Host.
 	 * @return string
 	 */
 	public static function Host()
 	{return $_SERVER['HTTP_HOST'];}
-	
+
 	/**
 	 * Remote address.
 	 * @return string
 	 */
 	public static function Address()
 	{return $_SERVER['REMOTE_ADDR'];}
-	
+
 	/**
 	 * Remote port.
 	 * @return int
 	 */
 	public static function Port()
 	{return intval($_SERVER['REMOTE_PORT']);}
-	
+
 	/**
 	 * Fetch POST data.
 	 * @param  string $key - Key name.
@@ -65,7 +65,7 @@ class HttpRequest {
 	 */
 	public static function Post($key)
 	{return self::MatrixSearch($key, $_POST);}
-	
+
 	/**
 	 * Fetch GET data.
 	 * @param  string $key - Key name.
@@ -73,7 +73,7 @@ class HttpRequest {
 	 */
 	public static function Get($key)
 	{return self::MatrixSearch($key, $_GET);}
-	
+
 	/**
 	 * Uri.
 	 * @return string
@@ -88,7 +88,7 @@ class HttpRequest {
 		$paths = preg_split('/\//', $path, -1, PREG_SPLIT_NO_EMPTY);
 		return implode("/", $paths);
 	}
-	
+
 	/**
 	 * Content.
 	 * @return string
@@ -96,7 +96,7 @@ class HttpRequest {
 	public static function Content(){
 		return file_get_contents('php://input');
 	}
-	
+
 	/**
 	 * Content type.
 	 * @return string
@@ -107,7 +107,7 @@ class HttpRequest {
 		$parts = explode(';', $_SERVER['Content-Type']);
 		return strtolower($parts[0]);
 	}
-	
+
 	/**
 	 * Content charset.
 	 * @return string
@@ -119,51 +119,51 @@ class HttpRequest {
 		if(!isset($parts[1])) return mb_internal_encoding();
 		else return strtoupper($parts[1]);
 	}
-	
-	
+
+
 	/**
 	 * Is this a GET request?
 	 * @return bool
 	 */
 	public static function IsGet()
 	{return (self::Method() === 'GET');}
-	
+
 	/**
 	 * Is this a PUT request?
 	 * @return bool
 	 */
 	public static function IsPut()
 	{return (self::Method() === 'PUT');}
-	
+
 	/**
 	 * Is this a PATCH request?
 	 * @return bool
 	 */
-	public static function IsPATCH()
+	public static function IsPatch()
 	{return (self::Method() === 'PATCH');}
-	
+
 	/**
 	 * Is this a DELETE request?
 	 * @return bool
 	 */
 	public static function IsDelete()
 	{return (self::Method() === 'DELETE');}
-	
+
 	/**
 	 * Is this a POST request?
 	 * @return bool
 	 */
 	public static function IsPost()
 	{return (self::Method() === 'POST');}
-	
+
 	/**
 	 * Is this a XREQUEST request?
 	 * @return bool
 	 */
 	public static function IsXhr()
 	{return isset($_HEADER['X_REQUESTED_WITH']);}
-	
-	
+
+
 	/**
 	 * Search Matrix.
 	 *

@@ -36,7 +36,7 @@ class HttpResponse {
 		if(self::$ReasonPhrase === '')
 		throw new InvalidArgumentException('ReasonPhrase must be supplied for this code');
 	}
-	
+
 	/**
 	 * Redirect.
 	 * @param string    $url - Redirect destination.
@@ -48,7 +48,7 @@ class HttpResponse {
 		self::Header('Location', $url);
 		self::Status($code);
 	}
-	
+
 	/**
 	 * Http header.
 	 * @param string  $name - Header name.
@@ -56,7 +56,7 @@ class HttpResponse {
 	 */
 	public static function Header($name, $value)
 	{self::$Headers[$name] = $value;}
-	
+
 	/**
 	 * Json.
 	 * @param mixed     $data - The data.
@@ -77,7 +77,7 @@ class HttpResponse {
 		
 		self::$Content = $json;
 	}
-	
+
 	/**
 	 * Content.
 	 * @param  string $data - The data.
@@ -88,7 +88,7 @@ class HttpResponse {
 		
 		return self::$Content;
 	}
-	
+
 	/**
 	 * With content type.
 	 * @param string $type - Content type.
@@ -101,7 +101,7 @@ class HttpResponse {
 		
 		self::$Headers['Content-Type'] = strtolower($type).'; charset='.$charset;
 	}
-	
+
 	/**
 	 * With content charset.
 	 * @param string $charset - Charset.
@@ -113,21 +113,21 @@ class HttpResponse {
 		
 		self::$Headers['Content-Type'] = $type.'; charset='.$charset;
 	}
-	
+
 	/**
 	 * Headers.
 	 * @return array
 	 */
 	public static function Headers()
 	{return self::$Headers;}
-	
+
 	/**
 	 * Status code.
 	 * @return int
 	 */
 	public static function StatusCode()
 	{return self::$StatusCode;}
-	
+
 	/**
 	 * Reason phrase.
 	 * @return string
@@ -139,29 +139,29 @@ class HttpResponse {
 		if(empty(self::$ReasonPhrase))
 		return self::$HttpErrors[self::$StatusCode];
 	}
-	
-	
+
+
 	/**
 	 * Is this response OK?
 	 * @return bool
 	 */
 	public static function IsOk()
 	{return (self::$StatusCode == 200);} 
-	
+
 	/**
 	 * Is this response empty?
 	 * @return bool
 	 */
 	public static function IsEmpty()
 	{return in_array(self::$StatusCode, [204, 205, 304]);}
-	
+
 	/**
 	 * Is this response informational?
 	 * @return bool
 	 */
 	public static function IsInformational()
 	{return in_array(self::$StatusCode, [100, 101, 102]);}
-	
+
 	/**
 	 * Is this response a redirection?
 	 * @return bool
@@ -175,30 +175,30 @@ class HttpResponse {
 	 */
 	public static function IsForbidden()
 	{return (self::$StatusCode == 403);}
-	
+
 	/**
 	 * Is this response not Found?
 	 * @return bool
 	 */
 	public static function IsNotFound()
 	{return (self::$StatusCode == 404);}
-	
-	
+
+
 	/** Content */
 	private static $Content = '';
-	
+
 	/** Status code */
 	private static $StatusCode = 200;
-	
+
 	/** Reason phrase */
 	private static $ReasonPhrase = '';
-	
+
 	/** Headers */
 	private static $Headers = [
 		'X-Powered-By' => 'CloudFrame V:1.1',
 		'Content-Type' => 'application/json; charset=UTF-8'
 	];
-	
+
 	/** Http errors */
 	private static $HttpErrors = [
 		// Informational 1xx

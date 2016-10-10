@@ -51,22 +51,22 @@ class RequestAnalysis {
 			$trigger = $json_data['method'];
 			
 			// Not implemented
-			if(!$dispatch->Exists($trigger))
+			if(!$dispatch->Exists('BIND@'.$trigger))
 			throw new RpcNotImplementedException();
 			
 			// Params by JSON RPC
-			if(!isset($json_data['params'])) $dispatch->Invoke($trigger);
-			else $dispatch->Invoke($trigger, $json_data['params']);
+			if(!isset($json_data['params'])) $dispatch->Invoke('BIND@'.$trigger);
+			else $dispatch->Invoke('BIND@'.$trigger, $json_data['params']);
 		} else {
 			// Trigger by URI
 			$trigger = HttpRequest::Uri();
 			
 			// Not found
-			if(!$dispatch->Exists($trigger))
+			if(!$dispatch->Exists('ROUTE@'.$trigger))
 			throw new NotFoundException();
 			
 			// Invoke
-			$dispatch->Invoke($trigger);
+			$dispatch->Invoke('ROUTE@'.$trigger);
 		}
 	}
 }

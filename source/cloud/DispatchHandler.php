@@ -45,7 +45,7 @@ class DispatchHandler {
 		$this->Procedures[strtoupper($trigger)] = $procedure;
 		return $this;
 	}
-	
+
 	/**
 	 * Procedure trigger exists?
 	 * @param  string $trigger - Trigger.
@@ -72,7 +72,7 @@ class DispatchHandler {
 		
 		return false;
 	}
-	
+
 	/**
 	 * Invoke procedure.
 	 * @param  string $procedure - Procedure name.
@@ -135,11 +135,11 @@ class DispatchHandler {
 		
 		throw new RuntimeException('Unable to find the procedure');
 	}
-	
-	
+
+
 	/** Triggers */
 	private $Triggers = [];
-	
+
 	/** Procedures */
 	private $Procedures = [];
 }
