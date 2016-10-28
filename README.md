@@ -2,7 +2,7 @@
 CloudFrame é uma pequena estrutura implementada em PHP para web services.
 
 # Documentação
-[Veja a documentação](https://github.com/rodrigomart/CloudFrame/wiki).
+[Veja a documentação](https://github.com/rodrigomart/CloudFrame/wiki/Primeiros-Passos).
 
 # Licença
 MIT Lisense - Copyright(C) 2016 Rodrigo Martins <rodrigo.matins.071090@gmail.com>
