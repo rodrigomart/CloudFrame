@@ -13,7 +13,7 @@ use Cloud\Http\HttpResponse;
 $cloud = new Cloud;
 
 # Nat
-$cloud->Bind('nat/(:any)', function($data){
+$cloud->Route('nat/(:any)', function($data){
 	HttpResponse::Content(
 		$data.': '.
 		HttpRequest::Address().':'.HttpRequest::Port()
