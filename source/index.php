@@ -1,24 +1,18 @@
 <?php
-# Autoloader
-require 'autoload';
 
+define('CF_VERSION', '2.0');
+define('BASE_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+
+# Autoloader PSR-4
+require_once BASE_PATH.'cloud/autoload.php';
 
 # Using CLOUD
 use Cloud\Cloud;
-use Cloud\Http\HttpRequest;
-use Cloud\Http\HttpResponse;
-
 
 # Cloud frame
-$cloud = new Cloud;
+$cloud = new Cloud(['debug'=>false]);
 
-# Nat
-$cloud->Bind('nat/(:any)', function($data){
-	HttpResponse::Content(
-		$data.': '.
-		HttpRequest::Address().':'.HttpRequest::Port()
-	);
-});
+require_once BASE_PATH.'app/routes.php';
 
 # Run application
 $cloud->Run();

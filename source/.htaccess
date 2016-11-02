@@ -1,13 +1,13 @@
 # CACHE CONTROL
 <IfModule mod_headers.c>
 	Header set Connection keep-alive
-	
+
 	Header set Cache-Control "max-age=0, private"
 </IfModule>
 
 # REWRITE RULES
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	
+
 	RewriteRule ^(.*)$ index.php [L]
 </IfModule>

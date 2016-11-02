@@ -2,16 +2,16 @@
 # Namespace
 namespace Cloud;
 
-
 # Using
 use Exception;
-use Cloud\Http\HttpRequest;
-use Cloud\Http\HttpResponse;
+use Cloud\Libraries\Http\HttpRequest;
+use Cloud\Libraries\Http\HttpResponse;
+use Cloud\Libraries\SQL\SQL;
+
 use Cloud\Exception\NotFoundException;
 use Cloud\Exception\RpcNotImplementedException;
 use Cloud\Exception\InvalidJsonFormatException;
 use Cloud\Exception\InvalidJsonRpcFormatException;
-
 
 /**
  * Cloud frame.
@@ -19,7 +19,8 @@ use Cloud\Exception\InvalidJsonRpcFormatException;
  * @license   - MIT License
  * @copyright - (C) 2016 Rodrigo Martins
  * @package   - CloudFrame
- * @version   - 1.1
+ * @version   - 2.0
+ * @update	  - Cesar Ferreira
  */
 class Cloud {
 	/**
@@ -27,13 +28,25 @@ class Cloud {
 	 * @param array $settings - Settings.
 	 */
 	public function __construct(array $settings=[]){
-		// Request analysis
+		# Request analysis
 		$this->Analysis = new RequestAnalysis;
 		
-		// Request analysis
+		# Request analysis
 		$this->Dispatch = new DispatchHandler;
+		
+		# Loading database configuration
+		require_once BASE_PATH.'app'.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'database.php';
+		
+		# SQL initialization
+		if (!empty($db['host']))
+		{
+			new SQL($db['host'], $db['port'], $db['user'], $db['pass'], $db['bank']);
+			foreach($db['queries'] as $query)
+			{
+				SQL::Query($query);
+			}
+		}
 	}
-
 
 	/**
 	 * Binding trigger procedure.

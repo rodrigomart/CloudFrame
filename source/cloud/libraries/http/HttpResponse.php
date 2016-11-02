@@ -1,6 +1,6 @@
 <?php
 # Namespace
-namespace Cloud\Http;
+namespace Cloud\Libraries\Http;
 
 
 # Using
@@ -111,7 +111,7 @@ class HttpResponse {
 		$parts = explode(';', self::$Headers['Content-Type']);
 		$content_type = strtolower($parts[0]);
 		
-		self::$Headers['Content-Type'] = $type.'; charset='.$charset;
+		self::$Headers['Content-Type'] = $content_type.'; charset='.$charset;
 	}
 
 	/**

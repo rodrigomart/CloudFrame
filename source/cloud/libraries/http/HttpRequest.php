@@ -1,6 +1,6 @@
 <?php
 # Namespace
-namespace Cloud\Http;
+namespace Cloud\Libraries\Http;
 
 
 /**

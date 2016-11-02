@@ -17,7 +17,8 @@ use ReflectionMethod;
  * @license   - MIT License
  * @copyright - (C) 2016 Rodrigo Martins
  * @package   - CloudFrame
- * @version   - 1.1
+ * @version   - 2.0
+ * @update    - Cesar Ferreira
  */
 class DispatchHandler {
 	/**
@@ -33,14 +34,14 @@ class DispatchHandler {
 		$this->Triggers[] = $trigger;
 		
 		// Treatment for objects
-		if(is_string($procedure) && strpos($procedure, ':') !== false)
-		$procedure = preg_split('/::/i', $procedure, -1, PREG_SPLIT_NO_EMPTY);
+		if(is_string($procedure) && strpos($procedure, '@') !== false)
+		$procedure = preg_split('/@/i', $procedure, -1, PREG_SPLIT_NO_EMPTY);
 		
 		if(is_array($procedure) && is_string($procedure[0]))
-		$procedure[0] = new $procedure[0];
-		
-		if(!is_callable($procedure))
-		throw new RuntimeException('The procedure can not be called');
+		{
+			$class = 'App\Controllers\\'.$procedure[0];
+			$procedure[0] = new $class;
+		}
 		
 		$this->Procedures[strtoupper($trigger)] = $procedure;
 		return $this;

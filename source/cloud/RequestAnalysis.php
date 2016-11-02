@@ -5,7 +5,7 @@ namespace Cloud;
 
 # Using
 use Exception;
-use Cloud\Http\HttpRequest;
+use Cloud\Libraries\Http\HttpRequest;
 use Cloud\Exception\NotFoundException;
 use Cloud\Exception\RpcNotImplementedException;
 use Cloud\Exception\InvalidJsonFormatException;
@@ -18,7 +18,7 @@ use Cloud\Exception\InvalidJsonRpcFormatException;
  * @license   - MIT License
  * @copyright - (C) 2016 Rodrigo Martins
  * @package   - CloudFrame
- * @version   - 1.1
+ * @version   - 2.0
  */
 class RequestAnalysis {
 	/**
