@@ -1,6 +1,5 @@
 <?php
 
-define('CF_VERSION', '2.0');
 define('BASE_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
 
 # Autoloader PSR-4

@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
+use Cloud\Controller;
 use Cloud\Libraries\Http\HttpRequest;
 use Cloud\Libraries\Http\HttpResponse;
 
-
-class Welcome
+class Welcome extends Controller
 {
 	public function helloworld()
 	{
@@ -14,8 +14,9 @@ class Welcome
 		
 		$data['Hello'] = 'Olá';
 		$data['World'] = 'Mundo!';
-		$data['msg'] = 'Bem-vindo ao CloudFrame 2!';
-		$data['Version'] = 'v'.CF_VERSION;
+		$data['msg'] = 'Bem-vindo ao '.$this->getCFName().'!';
+		$data['Version'] = $this->getCFVersion();
+		$data['Path'] = BASE_PATH;
 		echo view('welcome/helloworld.html', $data);
 	}
 }

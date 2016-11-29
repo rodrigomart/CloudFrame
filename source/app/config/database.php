@@ -12,9 +12,9 @@
 |	$db['pass'] = '';
 |	$db['bank'] = 'mydb';
 */
-$db['host'] = '';
+$db['host'] = 'localhost';
 $db['port'] = 3306;
-$db['user'] = '';
+$db['user'] = 'root';
 $db['pass'] = '';
 $db['bank'] = '';
 
@@ -25,8 +25,8 @@ $db['bank'] = '';
 | -------------------------------------------------------------------
 |  Prototype:
 |
-|	$db['queries'] = array(
+|	$db['queries'] = [
 |		"SET @@SESSION.TIME_ZONE = '+00:00';", # TIMEZONE
-|	);
+|	];
 */
-$db['queries'] = array();
+$db['queries'] = [];
